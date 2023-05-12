@@ -1,6 +1,8 @@
+{% extends 'base.html' %}
+
 {% block page_data %}
 <title>Sign In - Generator Against Humanity</title>
-<link rel="stylesheet" href="/static/styles/.css">
+<link rel="stylesheet" href="/static/styles/form.css">
 {% endblock %}
 
 {% block content %}
@@ -8,7 +10,7 @@
     <h1>Oh. It's you. Back again?</h1>
 </header>
 <main>
-    <form action="/users" method="POST">
+    <form action="/sessions" method="POST">
         <section class="input">
             <label for="">Email:</label>
             <input type="text" name="email">
@@ -18,7 +20,7 @@
             <input type="password" name="password">
         </section>
         <section class="button">
-            <button>Sign up!</button>
+            <button>Sign in.</button>
         </section>
     </form>
 </main>

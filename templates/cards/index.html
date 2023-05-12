@@ -2,8 +2,23 @@
 
 {% block page_data %}
 <title>Browse Cards - Generator Against Humanity</title>
-<link rel="stylesheet" href="/static/styles/.css">
+<link rel="stylesheet" href="/static/styles/welcome.css">
 {% endblock %}
 
 {% block content %}
+<header>
+    <h1>Browse Cards</h1>
+    {% if current_user %}
+    <h3>Hey, {{ current_user['first_name'] }}</h3>
+    <form action="/sessions/delete" method="POST">
+        <button>Sign Out</button>
+    </form>
+    <a href="/cards/user={{ current_user['id'] }}">My Cards</a>
+    {% else %}
+    <a href="/users/new">Sign Up/In</a>
+    {% endif %}
+</header>
+<main>
+    <h1>Still in progress! Come back later.</h1>
+</main>
 {% endblock %}

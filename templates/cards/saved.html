@@ -1,7 +1,55 @@
 {% block page_data %}
 <title>My Cards - Generator Against Humanity</title>
-<link rel="stylesheet" href="/static/styles/.css">
+<link rel="stylesheet" href="/static/styles/index.css">
 {% endblock %}
 
 {% block content %}
+<header>
+    {% if current_user %}
+    <h1>My Cards</h1>
+    <h3>Hey, {{ current_user['first_name'] }}</h3>
+    <form action="/sessions/delete" method="POST">
+        <button>Sign Out</button>
+    </form>
+    <a href="/cards/user={{ current_user['id'] }}">My Cards</a>
+    {% else %}
+    
+    {% endif %}
+</header>
+<main>
+    {% if current_user %}
+    <section class="saved-cards">
+        {% for card in cards %}
+        <section class="card-container">
+            <section class="display">
+                <p class="text">{{ card['text'] }}</p>
+                <p class="author"><!-- gonna need to pass the author name --></p>
+            </section>
+            <section class="controls">
+                <!-- can hyperlinks POST? maybe these need to be buttons in forms -->
+                <a href="/cards/user={{ current_user['id'] }}/{{ card['id'] }}/">Remove from Saved</a>
+                <a href="/cards/{{ card['id'] }}">Delete</a>
+            </section>
+        </section>
+        {% endfor %}
+    </section>
+    <section class="editor">
+        <h1>Create a Card</h1>
+        <section class="display">
+            <p class="text"></p>
+            <p class="author">Created by {{ current_user['first_name'] +' ' + current_user['last_name'] }}</p>
+        </section>
+        <section class="controls">
+            <a href="/cards/user={{ current_user['id'] }}/{{ card['id'] }}/">Remove from Saved</a>
+            <a href="/cards/{{ card{'id'} }}">Edit</a>
+            <a href="/cards/">Delete</a>
+        </section>
+    </section>
+    {% else %}
+    <h1>You don't seem to be logged in...<br>
+        How did you even get here? You shouldn't be able to do that.<br>
+        Try signing in and coming back here.
+    </h1>
+    {% endif %}
+</main>
 {% endblock %}

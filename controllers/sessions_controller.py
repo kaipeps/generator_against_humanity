@@ -3,7 +3,7 @@ from models.user import find_user_by_email
 import bcrypt
 
 def new():
-    return render_template('session/new.html')
+    return render_template('sessions/new.html')
 
 def create():
     email = request.form.get('email')

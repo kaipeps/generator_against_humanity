@@ -34,5 +34,7 @@ For this project I would like to include (by priority):
 - browsing & saving of submitted custom cards
 - an interface to randomly generate a question card and fill the blanks with selected answer cards from a user's saved cards
 - API implementation to use officially published cards too
+- minor javascript additions to make html elements interactive (i.e. collapsible menus) without having to redirect
 - inputs to only retrieve cards from certain decks for the generator
+- interaction to let players draw a hand of answer cards to use in the generator 
 - (if I have the chance/time) a service to digitally play the game online with friends

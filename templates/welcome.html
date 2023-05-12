@@ -2,11 +2,20 @@
 
 {% block page_data %}
 <title>Welcome - Generator Against Humanity</title>
+<link rel="stylesheet" href="/static/styles/welcome.css">
 {% endblock %}
 
 {% block content %}
 <header>
-<a href="/sessions">Sign </a>
+{% if current_user %}
+<h3>Hey, {{ current_user['first_name'] }}</h3>
+<form action="/sessions/delete" method="POST">
+    <button>Sign Out</button>
+</form>
+<a href="/cards/user={{ current_user['id'] }}">My Cards</a>
+{% else %}
+<a href="/users/new">Sign Up/In</a>
+{% endif %}
 </header>
 <main>
     <h1>Welcome to a<br>Generator Against Humanity</h1>
