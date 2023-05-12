@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block page_data %}
+<title>Create Account - Generator Against Humanity</title>
+<link rel="stylesheet" href="/static/styles/.css">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Really? Really. Okay.</h1>
+</header>
+<main>
+    <form action="/users" method="POST">
+        <section class="input">
+            <label for="">First Name:</label>
+            <input type="text" name="first_name">
+        </section>
+        <section class="input">
+            <label for="">Last Name:</label>
+            <input type="text" name="last_name">
+        </section>
+        <section class="input">
+            <label for="">Email:</label>
+            <input type="text" name="email">
+        </section>
+        <section class="input">
+            <label for="">Password:</label>
+            <input type="password" name="password">
+        </section>
+        <section class="button">
+            <button>Sign up!</button>
+        </section>
+    </form>
+</main>
+{% endblock %}

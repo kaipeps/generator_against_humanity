@@ -1,0 +1,25 @@
+{% block page_data %}
+<title>Sign In - Generator Against Humanity</title>
+<link rel="stylesheet" href="/static/styles/.css">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Oh. It's you. Back again?</h1>
+</header>
+<main>
+    <form action="/users" method="POST">
+        <section class="input">
+            <label for="">Email:</label>
+            <input type="text" name="email">
+        </section>
+        <section class="input">
+            <label for="">Password:</label>
+            <input type="password" name="password">
+        </section>
+        <section class="button">
+            <button>Sign up!</button>
+        </section>
+    </form>
+</main>
+{% endblock %} 

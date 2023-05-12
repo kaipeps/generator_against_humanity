@@ -1,15 +1,19 @@
 # Generator Against Humanity
-A web app 
-based on a party game 
-for horrible people.
+A web app  
+based on a party game  
+for horrible people.  
+
+> WARNING: If you aren't familiar with the original game, Cards Against Humanity contains some infamously offensive content. I have some options in place to hide said content, however I cannot guarantee full coverage.  
+> 
+> Proceed at your own risk.
 ## :computer: [Click here](https://media.tenor.com/o656qFKDzeUAAAAC/rick-astley-never-gonna-give-you-up.gif) to see my live project!
 ## :page_facing_up: About
-For this project, I'll be aiming to create a web app where users will be able to sign up to create and submit their own customised cards.
+For this project I'll be aiming to create a web app where users will be able to sign up to create, save and submit their own customised Cards Against Humanity, as well as save cards created by others. Users will also be able to access a page where they can use their saved cards to generate randomised card combos and include officially published Cards through the REST Against Humanity API.
 - Add in-app screenshots
 ## :pencil: Planning & Problem Solving
 - Talk about the approach to the problem.
 - Add screenshots/drawings of the doodles/plans during the planning phase.
-- Flow charts of app logic.
+- Flow charts of app logic.  
 ![sketching](https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
 ## :floppy_disk: Cool tech
 - Programming languages
