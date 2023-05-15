@@ -1,0 +1,31 @@
+h2 {
+    text-align: center;
+}
+h2 a {
+    text-decoration: underline;
+}
+.cards {
+    border: 3px solid grey;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    max-height: 83vh;
+    overflow-y: auto;
+    justify-items: center;
+}
+.display {
+    margin: 10px;
+}
+.card-container {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+.controls {
+    display: flex;
+    gap: 5%;
+    justify-content: space-evenly;
+    min-width: max-content;
+}

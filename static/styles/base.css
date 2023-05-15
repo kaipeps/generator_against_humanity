@@ -17,7 +17,7 @@ header h1, h3 {
 .user {
     display: flex;
     justify-content: space-between;
-    width: 30vw;
+    width: 25vw;
     min-width: 200px;
 }
 .user-controls {
@@ -37,12 +37,12 @@ a, button {
     text-decoration: none;
 }
 .display {
-    --base-height: 20vw;
-    height: var(--base-height);
-    width: calc(var(--base-height) * 0.72);
-    border-radius: calc(var(--base-height) * 0.05);
-    padding: calc(var(--base-height) * 0.05);
-    font-size: calc(var(--base-height) * 0.1);
+    font-size: 1.2em;
+    --base-width: 160px;
+    width: var(--base-width);
+    height: calc(var(--base-width) * 1.39);
+    border-radius: calc(var(--base-width) * 0.08);
+    padding: calc(var(--base-width) * 0.12);
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ a, button {
     margin: calc(var(--base-height) * 0.025) 0;
 }
 .author {
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 .black {
     background-color: black;
@@ -62,4 +62,11 @@ a, button {
     background-color: white;
     border: 1px solid black;
     color: black;
+}
+footer {
+    margin: 10px;
+}
+footer a {
+    font-size: 1.5em;
+    padding: 10px;
 }

@@ -2,7 +2,7 @@
 
 {% block page_data %}
 <title>Edit Card - Generator Against Humanity</title>
-<link rel="stylesheet" href="/static/styles/form.css">
+<link rel="stylesheet" href="/static/styles/card_form.css">
 {% endblock %}
 
 {% block content %}
@@ -30,12 +30,15 @@
         </section>
         <section class="controls">
             <label for="">Card Color:</label>
-            <section class="radios">
+            <section class="radio-controls">
                 <input type="radio" name="color" value="black">Black</input>
                 <input type="radio"name="color" value="white">White</input>
             </section>
-            <label for="">Pick _ to answer - 3 max:</label>
-            <input type="number" name="pick" default="0" max="3">
+            <label for="">Cards to answer:</label>
+            <section class="pick">
+                <label for="">3 Max:</label>
+                <input type="number" name="pick" value="0" max="3">
+            </section>
             <section class="public-check">
                 <label for="">Share to public?</label>
                 <input type="checkbox" name="public">

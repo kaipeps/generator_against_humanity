@@ -7,6 +7,7 @@
 
 {% block content %}
 <header>
+    <h1>Welcome</h1>
     {% if current_user %}
     <section class="user">
         <h3>Hey, {{ current_user['first_name'] }}</h3>
@@ -24,6 +25,5 @@
 <main>
     <h1>Welcome to a<br>Generator Against Humanity</h1>
     <a id="browse" href="/cards/browse">Browse Custom Cards</a>
-    <!-- <a id="generator" href="/cards/generator">Surprise me</a> -->
 </main>
 {% endblock %}

@@ -23,6 +23,9 @@
     {% endif %}
 </header>
 <main>
+    {% if current_user is false %}
+    <h2>Please <a href="/sessions/new">sign in</a> to save cards.</h2>
+    {% endif %}
     <section class="cards">
         {% for card in cards %}
         <section class="card-container">
@@ -42,12 +45,16 @@
                 <form action="/cards/save/{{ card['card_id'] }}">
                     <button>Save to My Cards</button>
                 </form>
-                {% else %}
-                <p>Please <a href="/sessions/new">sign in</a> to save cards.</p>
                 {% endif %}
             </section>
         </section>
         {% endfor %}
     </section>
 </main>
+<footer>
+    <a href="/">Back to Welcome</a>
+    {% if current_user %}
+    <a href="/cards/new">Create a Card</a>
+    {% endif %}
+</footer>
 {% endblock %}

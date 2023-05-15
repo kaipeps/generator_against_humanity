@@ -10,4 +10,4 @@ def create():
     email = request.form.get('email')
     password = request.form.get('password')
     create_user(first_name, last_name, email, password)
-    return redirect('/')
+    return redirect('/sessions/new')

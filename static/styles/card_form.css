@@ -1,0 +1,27 @@
+textarea {
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: inherit;
+    color: inherit;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    font-size: 1.2em;
+}
+input {
+    max-width: 30px;
+}

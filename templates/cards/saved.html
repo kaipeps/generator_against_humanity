@@ -47,14 +47,18 @@
             </section>
         </section>
         {% endfor %}
-        <a href="/cards/new">Create a Card</a>
     </section>
     {% else %}
     <h1>You don't seem to be logged in...<br>
         How did you even get here? You shouldn't be able to do that.<br>
         Try signing in and coming back here.
     </h1>
-    <a href="/">Back to Welcome</a>
     {% endif %}
 </main>
+<footer>
+    <a href="/">Back to Welcome</a>
+    {% if current_user %}
+    <a href="/cards/new">Create a Card</a>
+    {% endif %}
+</footer>
 {% endblock %}
