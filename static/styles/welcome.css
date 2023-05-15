@@ -6,11 +6,11 @@ main {
 #browse {
     font-size: 1.2em;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 480px) {
     main {
         font-size: 1.5rem;
     }
     #browse {
-        font-size:1 em;
+        font-size: 1em;
     }
 }

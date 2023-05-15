@@ -17,8 +17,7 @@ header h1, h3 {
 .user {
     display: flex;
     justify-content: space-between;
-    width: 25vw;
-    min-width: 200px;
+    gap: 5vw;
 }
 .user-controls {
     display: flex;
@@ -69,4 +68,9 @@ footer {
 footer a {
     font-size: 1.5em;
     padding: 10px;
+}
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 0.9rem;
+    }
 }

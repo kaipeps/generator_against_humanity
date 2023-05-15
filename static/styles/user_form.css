@@ -4,6 +4,7 @@ body {
 }
 header {
     justify-content: center;
+    text-align: center;
 }
 form {
     border: 3px solid white;
@@ -27,4 +28,7 @@ p {
 }
 a {
     text-decoration: underline;
+}
+button {
+    font-weight: bold;
 }

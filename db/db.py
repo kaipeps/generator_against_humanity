@@ -1,7 +1,10 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 import psycopg2
 import psycopg2.extras
 
-DB_URL = 'postgres://gah_db_user:ULeYl2ZDZ9yHDij2Dda1YItLLZ16EYbO@dpg-chgun2bhp8u065rbmv40-a/gah_db'
+DB_URL = os.environ.get('DB_URL')
 
 def sql(query, parameters=[]):
     connection = psycopg2.connect(DB_URL)
