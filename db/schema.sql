@@ -21,7 +21,8 @@ CREATE TABLE cards(
     public_card BOOLEAN,
     CONSTRAINT author_id 
         FOREIGN KEY(author_id) 
-            REFERENCES users(user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE tags(
@@ -36,7 +37,8 @@ CREATE TABLE tags(
     nsfw BOOLEAN,
     CONSTRAINT card_ref
         FOREIGN KEY(card_id) 
-            REFERENCES cards(card_id)
+        REFERENCES cards(card_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE saves(
@@ -46,10 +48,12 @@ CREATE TABLE saves(
         PRIMARY KEY (saved_card_id,saved_user_id),
     CONSTRAINT card_ref
         FOREIGN KEY(saved_card_id) 
-            REFERENCES cards(card_id),
+        REFERENCES cards(card_id)
+        ON DELETE CASCADE,
     CONSTRAINT user_ref
         FOREIGN KEY(saved_user_id) 
-            REFERENCES users(user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE
 );
 
 -- SELECT id, first_name, last_name, email, is_admin FROM users

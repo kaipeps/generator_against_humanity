@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect
-from models.card import get_saved_cards, create_new_card, edit_card, delete_card, remove_from_saved, get_public_cards
+from models.card import get_saved_cards, create_new_card, save_card_to_user, edit_card, delete_card, remove_from_saved, get_public_cards
 from models.user import generate_author_name
 from services.session_info import current_user
 
