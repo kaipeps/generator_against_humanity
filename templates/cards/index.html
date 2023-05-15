@@ -41,6 +41,10 @@
                 <form action="/cards/delete/{{ card['card_id'] }}" method="POST">
                     <button>Delete</button>
                 </form>
+                {% elif card['card_id'] in saved_cards %}
+                <form action="/cards/remove/{{ card['card_id'] }}-{{ current_user['user_id'] }}" method="POST">
+                    <button>Remove from Saved</button>
+                </form>
                 {% elif current_user %}
                 <form action="/cards/save/{{ card['card_id'] }}">
                     <button>Save to My Cards</button>

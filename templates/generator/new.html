@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block page_data %}
-<title>Welcome - Generator Against Humanity</title>
-<link rel="stylesheet" href="/static/styles/welcome.css">
+<title>Filters - Generator Against Humanity</title>
+<link rel="stylesheet" href="/static/styles/generator.css">
 {% endblock %}
 
 {% block content %}
 <header>
-    <h1>Welcome</h1>
+    <h1>Filters</h1>
     {% if current_user %}
     <section class="user">
         <h3>Hey, {{ current_user['first_name'] }}</h3>
@@ -23,6 +23,22 @@
     {% endif %}
 </header>
 <main>
-    <h1>Not implemented yet!</h1>
+    <form action="/generator" method="POST">
+        <h1>Select packs:</h1>
+        <p><span>Disclaimer:</span> If you want to keep it PG (maybe M at most), select <span>ONLY</span> the "Family Edition" pack. I am not responsible for what appears on your screen otherwise.</p>
+        <section class="filters">
+            <section class="family filter">
+                <label for="">CAH: Family Edition</label>
+                <input type="checkbox" name="filter">
+            </section>
+            {% for pack in packs %}
+            <section class="filter">
+                <label for="">{{ pack }}</label>
+                <input type="checkbox" name="filter">
+            </section>
+            {% endfor %}
+        </section>
+        <button id="generate">Let's go already!</button>
+    </form>
 </main>
 {% endblock %}

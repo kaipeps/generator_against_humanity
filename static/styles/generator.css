@@ -1,6 +1,5 @@
-
 main {
-    margin: 10vh auto;
+    margin: 5vh auto;
     font-size: 2rem;
     text-align: center;
 }
@@ -8,11 +7,34 @@ span {
     font-weight: bold;
     color: tomato;
 }
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px
+}
+.family {
+    grid-column: 1 / span 3;
+}
+label {
+    font-size: 1rem;
+}
 .links {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
+#generate {
+    margin-top: 20px;
+}
 .surprise {
     font-size: 0.8em;
+}
+@media only screen and (max-width: 480px) {
+    main {
+        font-size: 1.5rem;
+    }
+    .filter {
+        display: flex;
+        flex-direction: column;
+    }
 }

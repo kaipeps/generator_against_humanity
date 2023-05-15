@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect
-from models.card import get_saved_cards, create_new_card, save_card_to_user, get_card_by_id, edit_card, delete_card, remove_from_saved, get_public_cards
+from models.card import get_saved_cards, create_new_card, save_card_to_user, get_card_by_id, edit_card, delete_card, remove_from_saved, get_public_cards, get_saves
 from models.user import generate_author_name
 from services.session_info import current_user
 
@@ -43,7 +43,9 @@ def remove(user_id, card_id):
 
 def browse():
     public_cards = get_public_cards()
-    return render_template('cards/index.html', cards = public_cards, current_user = current_user())
+    user = current_user()
+    saved_cards = get_saves(user['user_id'])
+    return render_template('cards/index.html', cards = public_cards, saved_cards = saved_cards, current_user = current_user())
 
 def save(card_id):
     current = current_user()

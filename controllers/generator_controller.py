@@ -3,9 +3,13 @@ from models.generator import added_packs, get_cards_from_api, append_saved, gene
 from models.card import get_saved_cards, get_saved_black_cards, get_saved_white_cards
 from services.session_info import current_user
 
+# read from pack_labels.txt into list
+packs_text = open('pack_labels.txt', 'r')
+packs_data = packs_text.read()
+pack_labels = packs_data.split('\n')
+
 def new():
-    return added_packs
-    return render_template('generator/new.html', packs = added_packs)
+    return render_template('generator/new.html', packs = pack_labels, current_user = current_user())
 
 def result():
     pack_filters = request.form.getlist('filter')

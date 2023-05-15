@@ -1,7 +1,7 @@
 from db.db import sql
 
 def get_saved_cards(user_id):
-    saved_cards = sql(f'SELECT color, text, author_name, pick FROM cards INNER JOIN saves ON saved_card_id = card_id WHERE saved_user_id = {user_id}')
+    saved_cards = sql(f'SELECT * FROM cards INNER JOIN saves ON saved_card_id = card_id WHERE saved_user_id = {user_id}')
     return saved_cards
 
 def create_new_card(color, text, author_id, author_name, pick, public_card):
@@ -19,6 +19,13 @@ def delete_card(card_id):
 
 def remove_from_saved(user_id, card_id):
     sql(f'DELETE FROM saved WHERE user_id = {user_id} AND card_id = {card_id} RETURNING *')
+
+def get_saves(user_id):
+    saves = sql(f'SELECT saved_card_id FROM saves WHERE saved_user_id = {user_id}')
+    saved_card_ids = []
+    for save in saves:
+        saved_card_ids.append(save['saved_card_id'])
+    return saved_card_ids
 
 def get_public_cards():
     public_cards = sql('SELECT * FROM cards WHERE public_card = TRUE')
