@@ -13,7 +13,7 @@ def create():
         return redirect('/')
     valid_password = bcrypt.checkpw(password.encode(), user['password_digest'].encode())
     if valid_password:
-        session['user_id'] = user['id']
+        session['user_id'] = user['user_id']
         return redirect('/')
     else:
         return redirect('/')

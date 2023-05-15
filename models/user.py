@@ -13,5 +13,11 @@ def find_user_by_email(email):
         return None
 
 def find_user_by_id(id):
-    users = sql('SELECT * FROM users WHERE id = %s', [id])
+    users = sql('SELECT * FROM users WHERE user_id = %s', [id])
     return users[0]
+
+def generate_author_name(author_id):
+    users_names = sql(f'SELECT first_name, last_name FROM users WHERE user_id = {author_id}')
+    author_name = users_names[0]
+    author_name = author_name['first_name'] + ' ' + author_name['last_name']
+    return author_name

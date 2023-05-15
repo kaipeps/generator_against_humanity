@@ -1,8 +1,22 @@
+{% extends 'base.html' %}
+
 {% block page_data %}
 <title>Generator Against Humanity</title>
 <link rel="stylesheet" href="/static/styles/welcome.css">
 {% endblock %}
 
 {% block content %}
+<header>
+    <h1>The Generator</h1>
+    {% if current_user %}
+    <h3>Hey, {{ current_user['first_name'] }}</h3>
+    <form action="/sessions/delete" method="POST">
+        <button>Sign Out</button>
+    </form>
+    <a href="/cards/user={{ current_user['id'] }}">My Cards</a>
+    {% else %}
+    <a href="/users/new">Sign Up/In</a>
+    {% endif %}
+</header>
 <h1>Not currently functional, try again later!</h1>
 {% endblock %}

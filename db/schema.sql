@@ -3,7 +3,7 @@ CREATE DATABASE gah_db;
 \c gah_db
 
 CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY,
     first_name TEXT,
     last_name TEXT,
     email TEXT,
@@ -12,15 +12,16 @@ CREATE TABLE users(
 );
 
 CREATE TABLE cards(
-    id SERIAL PRIMARY KEY, 
-    author_id INTEGER,
+    card_id SERIAL PRIMARY KEY, 
     color TEXT,
     text TEXT,
+    author_id INTEGER,
+    author_name TEXT,
     pick INTEGER,
     public_card BOOLEAN,
     CONSTRAINT author_id 
         FOREIGN KEY(author_id) 
-            REFERENCES users(id)
+            REFERENCES users(user_id)
 );
 
 CREATE TABLE tags(
@@ -33,16 +34,22 @@ CREATE TABLE tags(
     inside_joke BOOLEAN,
     rude BOOLEAN,
     nsfw BOOLEAN,
-    CONSTRAINT card_id 
+    CONSTRAINT card_ref
         FOREIGN KEY(card_id) 
-            REFERENCES cards(id)
+            REFERENCES cards(card_id)
 );
 
 CREATE TABLE saves(
-    card_id INTEGER,
-    user_id INTEGER,
+    saved_card_id INTEGER,
+    saved_user_id INTEGER,
     CONSTRAINT card_user_pair 
-        PRIMARY KEY (user_id,card_id)
+        PRIMARY KEY (saved_card_id,saved_user_id),
+    CONSTRAINT card_ref
+        FOREIGN KEY(saved_card_id) 
+            REFERENCES cards(card_id),
+    CONSTRAINT user_ref
+        FOREIGN KEY(saved_user_id) 
+            REFERENCES users(user_id)
 );
 
 -- SELECT id, first_name, last_name, email, is_admin FROM users

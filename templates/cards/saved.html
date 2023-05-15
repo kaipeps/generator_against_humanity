@@ -1,3 +1,5 @@
+{% extends'base.html' %}
+
 {% block page_data %}
 <title>My Cards - Generator Against Humanity</title>
 <link rel="stylesheet" href="/static/styles/index.css">
@@ -11,7 +13,7 @@
     <form action="/sessions/delete" method="POST">
         <button>Sign Out</button>
     </form>
-    <a href="/cards/user={{ current_user['id'] }}">My Cards</a>
+    <a href="/cards/browse">Browse Custom Cards</a>
     {% else %}
     
     {% endif %}
@@ -23,27 +25,44 @@
         <section class="card-container">
             <section class="display">
                 <p class="text">{{ card['text'] }}</p>
-                <p class="author"><!-- gonna need to pass the author name --></p>
+                <p class="author">{{ card['author_name'] }}</p>
             </section>
             <section class="controls">
-                <!-- can hyperlinks POST? maybe these need to be buttons in forms -->
-                <a href="/cards/user={{ current_user['id'] }}/{{ card['id'] }}/">Remove from Saved</a>
-                <a href="/cards/{{ card['id'] }}">Delete</a>
+                {% if current_user['user_id'] == card['author_id'] %}
+                <form action="/cards/{{ card['card_id'] }}/delete">
+                    <button>Delete</button>
+                </form>
+                {% else %}
+                <form action="/cards/remove/{{ current_user['user_id'] }}/{{ card['card_id'] }}/" method="POST">
+                    <button>Remove from Saved</button>
+                </form>
+                {% endif %}
             </section>
         </section>
         {% endfor %}
     </section>
     <section class="editor">
         <h1>Create a Card</h1>
-        <section class="display">
-            <p class="text"></p>
-            <p class="author">Created by {{ current_user['first_name'] +' ' + current_user['last_name'] }}</p>
-        </section>
-        <section class="controls">
-            <a href="/cards/user={{ current_user['id'] }}/{{ card['id'] }}/">Remove from Saved</a>
-            <a href="/cards/{{ card{'id'} }}">Edit</a>
-            <a href="/cards/">Delete</a>
-        </section>
+        <form action="/cards/create/{{ current_user['user_id'] }}" method="POST">
+            <section class="display">
+                <textarea name="text" cols="20" rows="4" placeholder="Enter card text here:"></textarea>
+                <p class="author">Created by {{ current_user['first_name'] +' ' + current_user['last_name'] }}</p>
+            </section>
+            <section class="controls">
+                <label for="">Card Color:</label>
+                <section class="radios">
+                    <input type="radio" name="color" value="black">Black</input>
+                    <input type="radio"name="color" value="white">White</input>
+                </section>
+                <label for="">Cards to answer - 3 max:</label>
+                <input type="number" name="pick" default="0" max="3">
+                <section class="public-check">
+                    <label for="">Share to public?</label>
+                    <input type="checkbox" name="public">
+                </section>
+                <button>Save</button>
+            </section>
+        </form>
     </section>
     {% else %}
     <h1>You don't seem to be logged in...<br>
