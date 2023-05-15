@@ -11,7 +11,7 @@ h2 a {
     margin: 10px auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    max-height: 83vh;
+    max-height: 76vh;
     overflow-y: auto;
     justify-items: center;
 }
@@ -28,4 +28,9 @@ h2 a {
     gap: 5%;
     justify-content: space-evenly;
     min-width: max-content;
+}
+@media only screen and (max-width: 450px) {
+    .cards {
+        max-height: 72vh;
+    }
 }

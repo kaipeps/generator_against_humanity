@@ -1,7 +1,7 @@
 from db.db import sql
 
 def get_saved_cards(user_id):
-    saved_cards = sql(f'SELECT * FROM cards INNER JOIN saves ON saved_card_id = card_id WHERE saved_user_id = {user_id}')
+    saved_cards = sql(f'SELECT color, text, author_name, pick FROM cards INNER JOIN saves ON saved_card_id = card_id WHERE saved_user_id = {user_id}')
     return saved_cards
 
 def create_new_card(color, text, author_id, author_name, pick, public_card):
@@ -26,3 +26,11 @@ def get_public_cards():
 
 def save_card_to_user(card_id, user_id):
     sql('INSERT INTO saves (saved_card_id, saved_user_id) VALUES (%s, %s) RETURNING *', [card_id, user_id])
+
+def get_saved_black_cards(user_id):
+    saved_black_cards = sql(f"SELECT text, author_name, pick FROM cards INNER JOIN saves ON saved_card_id = card_id WHERE color = 'black' AND saved_user_id = {user_id}")
+    return saved_black_cards
+
+def get_saved_white_cards(user_id):
+    saved_white_cards = sql(f"SELECT text, author_name, pick FROM cards INNER JOIN saves ON saved_card_id = card_id WHERE color = 'white' AND saved_user_id = {user_id}")
+    return saved_white_cards

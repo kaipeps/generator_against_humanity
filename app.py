@@ -4,6 +4,7 @@ import os
 from flask import Flask, render_template
 from routes.cards_routes import cards_routes
 from routes.users_routes import users_routes
+from routes.generator_routes import generator_routes
 from routes.sessions_routes import sessions_routes
 from services.session_info import current_user
 
@@ -14,6 +15,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 app.register_blueprint(cards_routes, url_prefix = '/cards')
 app.register_blueprint(users_routes, url_prefix = '/users')
+app.register_blueprint(generator_routes, url_prefix = '/generator')
 app.register_blueprint(sessions_routes, url_prefix = '/sessions')
 
 @app.route('/')
