@@ -6,6 +6,25 @@ main {
 #browse {
     font-size: 1.2em;
 }
+a {
+    display: block;
+}
+p {
+    font-size: 0.7em;
+    margin: 5px;
+}
+span {
+    font-weight: bold;
+    color: tomato;
+}
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.surprise {
+    font-size: 0.8em;
+}
 @media only screen and (max-width: 480px) {
     main {
         font-size: 1.5rem;

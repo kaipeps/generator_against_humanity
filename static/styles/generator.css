@@ -1,0 +1,18 @@
+
+main {
+    margin: 10vh auto;
+    font-size: 2rem;
+    text-align: center;
+}
+span {
+    font-weight: bold;
+    color: tomato;
+}
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.surprise {
+    font-size: 0.8em;
+}

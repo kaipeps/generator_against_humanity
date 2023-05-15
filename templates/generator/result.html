@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block page_data %}
+<title>Generator Against Humanity</title>
+<link rel="stylesheet" href="/static/styles/generator.css">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Welcome</h1>
+    {% if current_user %}
+    <section class="user">
+        <h3>Hey, {{ current_user['first_name'] }}</h3>
+        <section class="user-controls">
+            <form action="/sessions/delete" method="POST">
+                <button>Sign Out</button>
+            </form>
+            <a href="/cards/saved/{{ current_user['user_id'] }}">My Cards</a>
+        </section>
+    </section>
+    {% else %}
+    <a href="/users/new">Sign Up/In</a>
+    {% endif %}
+</header>
+<main>
+    <h1>{{ phrase }}</h1>
+    <a id="generator" href="/generator/new">Back to Filters</a>
+    <form class="surprise" action="/generator" method="POST">
+        <button>Surprise me.</button>
+        <p><span>WARNING:</span> This will use <span>ALL</span> cards,<br>including official (and NSFW) material.<br>Use at your own risk.</p>
+    </form>
+</main>
+{% endblock %}
