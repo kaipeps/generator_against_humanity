@@ -2,6 +2,31 @@ body {
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
     background-color: black;
     color: white;
+    margin: 15px;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+header h1, h3 {
+    margin: 5px 0;
+    min-width: fit-content;
+}
+.user {
+    display: flex;
+    justify-content: space-between;
+    width: 30vw;
+    min-width: 200px;
+}
+.user-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main {
+    margin: 10px;
 }
 a, button {
     border: none;
@@ -10,4 +35,31 @@ a, button {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
+}
+.display {
+    --base-height: 20vw;
+    height: var(--base-height);
+    width: calc(var(--base-height) * 0.72);
+    border-radius: calc(var(--base-height) * 0.05);
+    padding: calc(var(--base-height) * 0.05);
+    font-size: calc(var(--base-height) * 0.1);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.display p {
+    margin: calc(var(--base-height) * 0.025) 0;
+}
+.author {
+    font-size: 0.8em;
+}
+.black {
+    background-color: black;
+    border: 1px solid white;
+}
+.white {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
 }

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block page_data %}
+<title>Edit Card - Generator Against Humanity</title>
+<link rel="stylesheet" href="/static/styles/form.css">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Create a Card</h1>
+    {% if current_user %}
+    <section class="user">
+        <h3>Hey, {{ current_user['first_name'] }}</h3>
+        <section class="user-controls">
+            <form action="/sessions/delete" method="POST">
+                <button>Sign Out</button>
+            </form>
+            <a href="/cards/saved/{{ current_user['user_id'] }}">My Cards</a>
+        </section>
+    </section>
+    {% else %}
+    <a href="/users/new">Sign Up/In</a>
+    {% endif %}
+</header>
+<main>
+    <form action="/cards/create/{{ current_user['user_id'] }}" method="POST">
+        <section class="display white">
+            <textarea name="text" cols="20" rows="4" placeholder="Enter card text here:"></textarea>
+            <p class="author">Created by {{ current_user['first_name'] +' ' + current_user['last_name'] }}</p>
+        </section>
+        <section class="controls">
+            <label for="">Card Color:</label>
+            <section class="radios">
+                <input type="radio" name="color" value="black">Black</input>
+                <input type="radio"name="color" value="white">White</input>
+            </section>
+            <label for="">Pick _ to answer - 3 max:</label>
+            <input type="number" name="pick" default="0" max="3">
+            <section class="public-check">
+                <label for="">Share to public?</label>
+                <input type="checkbox" name="public">
+            </section>
+            <button>Save</button>
+        </section>
+    </form>
+</main>
+{% endblock %}

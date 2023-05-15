@@ -9,66 +9,52 @@
 <header>
     {% if current_user %}
     <h1>My Cards</h1>
-    <h3>Hey, {{ current_user['first_name'] }}</h3>
-    <form action="/sessions/delete" method="POST">
-        <button>Sign Out</button>
-    </form>
-    <a href="/cards/browse">Browse Custom Cards</a>
+    <section class="user">
+        <h3>Hey, {{ current_user['first_name'] }}</h3>
+        <section class="user-controls">
+            <form action="/sessions/delete" method="POST">
+                <button>Sign Out</button>
+            </form>
+            <a href="/cards/browse">Browse Cards</a>
+        </section>
+    </section>
     {% else %}
     
     {% endif %}
 </header>
 <main>
     {% if current_user %}
-    <section class="saved-cards">
+    <section class="cards">
         {% for card in cards %}
         <section class="card-container">
-            <section class="display">
+            <section class="display {{ card['color']}}">
                 <p class="text">{{ card['text'] }}</p>
-                <p class="author">{{ card['author_name'] }}</p>
+                <p class="author">Created by {{ card['author_name'] }}</p>
             </section>
             <section class="controls">
                 {% if current_user['user_id'] == card['author_id'] %}
+                <form action="/cards/edit/{{ card['card_id'] }}">
+                    <button>Edit</button>
+                </form>
                 <form action="/cards/delete/{{ card['card_id'] }}" method="POST">
                     <button>Delete</button>
                 </form>
                 {% else %}
-                <form action="/cards/remove/{{ current_user['user_id'] }}/{{ card['card_id'] }}/" method="POST">
+                <form action="/cards/remove/{{ card['card_id'] }}-{{ current_user['user_id'] }}" method="POST">
                     <button>Remove from Saved</button>
                 </form>
                 {% endif %}
             </section>
         </section>
         {% endfor %}
-    </section>
-    <section class="editor">
-        <h1>Create a Card</h1>
-        <form action="/cards/create/{{ current_user['user_id'] }}" method="POST">
-            <section class="display">
-                <textarea name="text" cols="20" rows="4" placeholder="Enter card text here:"></textarea>
-                <p class="author">Created by {{ current_user['first_name'] +' ' + current_user['last_name'] }}</p>
-            </section>
-            <section class="controls">
-                <label for="">Card Color:</label>
-                <section class="radios">
-                    <input type="radio" name="color" value="black">Black</input>
-                    <input type="radio"name="color" value="white">White</input>
-                </section>
-                <label for="">Cards to answer - 3 max:</label>
-                <input type="number" name="pick" default="0" max="3">
-                <section class="public-check">
-                    <label for="">Share to public?</label>
-                    <input type="checkbox" name="public">
-                </section>
-                <button>Save</button>
-            </section>
-        </form>
+        <a href="/cards/new">Create a Card</a>
     </section>
     {% else %}
     <h1>You don't seem to be logged in...<br>
         How did you even get here? You shouldn't be able to do that.<br>
         Try signing in and coming back here.
     </h1>
+    <a href="/">Back to Welcome</a>
     {% endif %}
 </main>
 {% endblock %}

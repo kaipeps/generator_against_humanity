@@ -30,11 +30,11 @@ If I had to start this again from scratch I would:
 ## :clipboard: Future features
 ~~If I were to continue expanding on this as a side project, I would:~~
 For this project I would like to include (by priority):
-- custom card creation & submission
-- browsing & saving of submitted custom cards
+- ~~custom card creation & submission~~
+- ~~browsing & saving of submitted custom cards~~
 - an interface to randomly generate a question card and fill the blanks with selected answer cards from a user's saved cards
+- inputs to only retrieve cards from certain decks for the generator
 - API implementation to use officially published cards too
 - minor javascript additions to make html elements interactive (i.e. collapsible menus) without having to redirect
-- inputs to only retrieve cards from certain decks for the generator
 - interaction to let players draw a hand of answer cards to use in the generator 
 - (if I have the chance/time) a service to digitally play the game online with friends

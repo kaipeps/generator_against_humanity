@@ -1,0 +1,12 @@
+.display {
+    --base-height: 35vw;
+}
+textarea {
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: inherit;
+    color: inherit;
+}

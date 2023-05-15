@@ -2,23 +2,52 @@
 
 {% block page_data %}
 <title>Browse Cards - Generator Against Humanity</title>
-<link rel="stylesheet" href="/static/styles/welcome.css">
+<link rel="stylesheet" href="/static/styles/index.css">
 {% endblock %}
 
 {% block content %}
 <header>
     <h1>Browse Cards</h1>
     {% if current_user %}
-    <h3>Hey, {{ current_user['first_name'] }}</h3>
-    <form action="/sessions/delete" method="POST">
-        <button>Sign Out</button>
-    </form>
-    <a href="/cards/user={{ current_user['id'] }}">My Cards</a>
+    <section class="user">
+        <h3>Hey, {{ current_user['first_name'] }}</h3>
+        <section class="user-controls">
+            <form action="/sessions/delete" method="POST">
+                <button>Sign Out</button>
+            </form>
+            <a href="/cards/saved/{{ current_user['user_id'] }}">My Cards</a>
+        </section>
+    </section>
     {% else %}
     <a href="/users/new">Sign Up/In</a>
     {% endif %}
 </header>
 <main>
-    <h1>Still in progress! Come back later.</h1>
+    <section class="cards">
+        {% for card in cards %}
+        <section class="card-container">
+            <section class="display {{ card['color']}}">
+                <p class="text">{{ card['text'] }}</p>
+                <p class="author">Created by {{ card['author_name'] }}</p>
+            </section>
+            <section class="controls">
+                {% if current_user['user_id'] == card['author_id'] %}
+                <form action="/cards/edit/{{ card['card_id'] }}">
+                    <button>Edit</button>
+                </form>
+                <form action="/cards/delete/{{ card['card_id'] }}" method="POST">
+                    <button>Delete</button>
+                </form>
+                {% elif current_user %}
+                <form action="/cards/save/{{ card['card_id'] }}">
+                    <button>Save to My Cards</button>
+                </form>
+                {% else %}
+                <p>Please <a href="/sessions/new">sign in</a> to save cards.</p>
+                {% endif %}
+            </section>
+        </section>
+        {% endfor %}
+    </section>
 </main>
 {% endblock %}
