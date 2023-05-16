@@ -47,4 +47,10 @@
         <button id="generate">Let's go already!</button>
     </form>
 </main>
+<footer>
+    <a href="/">Back to Welcome</a>
+    {% if current_user %}
+    <a href="/cards/new">Create a Card</a>
+    {% endif %}
+</footer>
 {% endblock %}

@@ -25,9 +25,15 @@
 <main>
     <h1>{{ phrase }}</h1>
     <a id="generator" href="/generator/new">Back to Filters</a>
-    <form class="surprise" action="/generator" method="POST">
+    <form class="surprise" action="/generator/surprise" method="POST">
         <button>Surprise me.</button>
         <p><span>WARNING:</span> This will use <span>ALL</span> cards,<br>including official (and NSFW) material.<br>Use at your own risk.</p>
     </form>
 </main>
+<footer>
+    <a href="/">Back to Welcome</a>
+    {% if current_user %}
+    <a href="/cards/new">Create a Card</a>
+    {% endif %}
+</footer>
 {% endblock %}

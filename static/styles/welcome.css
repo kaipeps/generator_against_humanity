@@ -25,6 +25,11 @@ span {
 .surprise {
     font-size: 0.8em;
 }
+@media only screen and (max-height: 750px) {
+    main {
+        font-size: 2rem;
+    }
+}
 @media only screen and (max-width: 480px) {
     main {
         font-size: 1.5rem;
