@@ -18,7 +18,7 @@ def delete_card(card_id):
     sql(f'DELETE FROM cards WHERE card_id = {card_id} RETURNING *')
 
 def remove_from_saved(user_id, card_id):
-    sql(f'DELETE FROM saved WHERE user_id = {user_id} AND card_id = {card_id} RETURNING *')
+    sql(f'DELETE FROM saves WHERE user_id = {user_id} AND card_id = {card_id} RETURNING *')
 
 def get_saves(user_id):
     saves = sql(f'SELECT saved_card_id FROM saves WHERE saved_user_id = {user_id}')

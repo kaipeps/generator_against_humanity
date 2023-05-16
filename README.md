@@ -1,7 +1,7 @@
 # Generator Against Humanity
-A web app  
-based on a party game  
-for horrible people.  
+**A web app**  
+**based on a party game**  
+**for horrible people.**  
 
 > WARNING: If you aren't familiar with the original game, Cards Against Humanity contains some infamously offensive content. I have some options in place to hide said content, however I cannot guarantee full coverage.  
 > 
