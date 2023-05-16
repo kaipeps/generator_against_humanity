@@ -28,7 +28,7 @@ def get_saves(user_id):
     return saved_card_ids
 
 def get_public_cards():
-    public_cards = sql('SELECT * FROM cards WHERE public_card = TRUE')
+    public_cards = sql('SELECT * FROM cards WHERE public_card = TRUE ORDER BY card_id')
     return public_cards
 
 def save_card_to_user(card_id, user_id):

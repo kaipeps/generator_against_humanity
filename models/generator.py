@@ -22,17 +22,13 @@ added_packs = packs_data.split('\n')
 # Looking at that code you're better off just using the family edition deck, otherwise you'll be waiting all day for it to check every single one of *MINIMUM* 600 cards in the return for 117 phrases. I'm no mathematician but I'm pretty sure that's a lot of checks.
 
 def filtered_packs_string(pack_filters):
-    selected = []
-    for i in range(len(added_packs)):
-        if True:
-            if '&' in added_packs[i]:
-                selected.append(added_packs[i].replace('&', "%26"))
-            else:
-                selected.append(added_packs[i])
-    return ','.join(selected)
+    for i in range(len(pack_filters)):
+        if '&' in pack_filters[i]:
+            pack_filters[i] = pack_filters[i].replace('&', "%26")
+    return ','.join(pack_filters)
 
 def get_cards_from_api(pack_filters):
-    if True:
+    if pack_filters:
         packs_string = filtered_packs_string(pack_filters)
         api_url = f"https://restagainsthumanity.com/api/v2/cards?packs={packs_string}"
         api_return = requests.get(api_url).json()
@@ -41,13 +37,10 @@ def get_cards_from_api(pack_filters):
         return None
 
 def append_saved(cards, saved_cards):
-    for card in saved_cards:
-        if card['color'] == 'black':
-            del card['color']
-            cards['black'].append(card)
-        elif card['color'] == 'white':
-            del card['color']
-            cards['white'].append(card)
+    for card in saved_cards['black']:
+        cards['black'].append(card)
+    for card in saved_cards['white']:
+        cards['white'].append(card)
     return cards
 
 def generate_phrase(cards):
@@ -56,7 +49,6 @@ def generate_phrase(cards):
     answers = random.choices(cards['white'], k = question_card['pick'])
     if phrase.find('_') != -1:
         for answer in answers:
-            print(answer)
             if answer['text'].endswith('.'):
                 answer = answer['text'][:-1]
             else:

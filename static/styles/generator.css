@@ -23,7 +23,7 @@ label {
     flex-direction: column;
     gap: 15px;
 }
-#generate {
+.saved {
     margin-top: 20px;
 }
 .surprise {

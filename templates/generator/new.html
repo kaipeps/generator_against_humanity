@@ -28,16 +28,22 @@
         <p><span>Disclaimer:</span> If you want to keep it PG (maybe M at most), select <span>ONLY</span> the "Family Edition" pack. I am not responsible for what appears on your screen otherwise.</p>
         <section class="filters">
             <section class="family filter">
-                <label for="">CAH: Family Edition</label>
-                <input type="checkbox" name="filter">
+                <label for="">{{  packs[0] }}</label>
+                <input type="checkbox" name="filter" value="{{ packs[0] }}">
             </section>
-            {% for pack in packs %}
+            {% for pack in packs[1:] %}
             <section class="filter">
                 <label for="">{{ pack }}</label>
-                <input type="checkbox" name="filter">
+                <input type="checkbox" name="filter" value="{{ pack }}">
             </section>
             {% endfor %}
         </section>
+        {% if current_user %}
+        <section class="saved filter">
+            <label for="">Include my Saved Cards</label>
+            <input type="checkbox" name="saved-cards" value="true" checked>
+        </section>
+        {% endif %}
         <button id="generate">Let's go already!</button>
     </form>
 </main>

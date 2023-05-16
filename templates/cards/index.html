@@ -23,7 +23,7 @@
     {% endif %}
 </header>
 <main>
-    {% if current_user is false %}
+    {% if current_user == None %}
     <h2>Please <a href="/sessions/new">sign in</a> to save cards.</h2>
     {% endif %}
     <section class="cards">

@@ -43,8 +43,11 @@ def remove(user_id, card_id):
 
 def browse():
     public_cards = get_public_cards()
-    user = current_user()
-    saved_cards = get_saves(user['user_id'])
+    if current_user():
+        user = current_user()
+        saved_cards = get_saves(user['user_id'])
+    else:
+        saved_cards = []
     return render_template('cards/index.html', cards = public_cards, saved_cards = saved_cards, current_user = current_user())
 
 def save(card_id):
